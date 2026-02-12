@@ -1,0 +1,22 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Large files
+*.pkl
+*.joblib
+*.zip
+*.parquet
+*.feather
+*.h5
+*.npz
+
+# VS Code
+.vscode/
+
