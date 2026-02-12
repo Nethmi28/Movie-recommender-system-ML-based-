@@ -24,21 +24,27 @@ def tmdb_genre_map():
 
 @st.cache_data(ttl=24*3600)
 def tmdb_search_first(movie_title: str):
-    """Return first TMDB search result dict or None"""
     url = "https://api.themoviedb.org/3/search/movie"
     params = {"api_key": TMDB_API_KEY, "query": movie_title}
-    r = requests.get(url, params=params, timeout=10)
-    data = r.json()
-    results = data.get("results", [])
-    return results[0] if results else None
+    try:
+        r = requests.get(url, params=params, timeout=10)
+        r.raise_for_status()
+        data = r.json()
+        results = data.get("results", [])
+        return results[0] if results else None
+    except requests.exceptions.RequestException:
+        return None
 
 @st.cache_data(ttl=24*3600)
 def tmdb_movie_details(tmdb_id: int):
-    """Return movie details JSON (includes genres)"""
     url = f"https://api.themoviedb.org/3/movie/{tmdb_id}"
     params = {"api_key": TMDB_API_KEY, "language": "en-US"}
-    r = requests.get(url, params=params, timeout=10)
-    return r.json()
+    try:
+        r = requests.get(url, params=params, timeout=10)
+        r.raise_for_status()
+        return r.json()
+    except requests.exceptions.RequestException:
+        return {}
 
 def fetch_poster_by_path(poster_path: str):
     if not poster_path:
