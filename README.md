@@ -45,14 +45,4 @@ The application is deployed locally using **Streamlit** to provide an interactiv
 5. Movie posters are fetched dynamically using the TMDB API
 
 ---
-## 📂 Project Structure
-
-├── app.py
-├── main.py
-├── build_similarity.py
-├── movies_list.pkl
-├── similarity.pkl
-├── dataset.csv
-├── README.md
-## 📂 Project Structure
 
