@@ -60,7 +60,7 @@ st.sidebar.header("Filters")
 top_n = st.sidebar.slider("Number of recommendations", min_value=5, max_value=20, value=5, step=1)
 
 genre_options = ["All"] + sorted(list(genre_name_to_id.keys()))
-genre_choice = st.sidebar.selectbox("Genre filter (TMDB)", genre_options, index=0)
+genre_choice = st.sidebar.selectbox("Genre filter ", genre_options, index=0)
 
 selected_genre_id = None if genre_choice == "All" else genre_name_to_id[genre_choice]
 
